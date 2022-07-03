@@ -1,10 +1,4 @@
-// todos is an array of objects with the following properties:
-// id: number
-// text: string
-type Todo = {
-  id: number;
-  text: string;
-};
+import { Todo } from "../models/Todo";
 
 const Todos: React.FC<{ todos: Todo[] }> = ({ todos }) => {
   return (
