@@ -1,11 +1,11 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
+import { TodosContext } from "../store/todos-context";
 import classes from "./NewTodo.module.css";
 
 // Thew NewTodo component will received reference to a method from the parent as a prop
 // THe method will accept the values from textRef as an argument and be executed when the user submits the form
-const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = ({
-  onAddTodo,
-}) => {
+const NewTodo = () => {
+  const todoCtx = useContext(TodosContext);
   const textRef = useRef<HTMLInputElement>(null);
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -15,7 +15,7 @@ const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = ({
     }
     enteredText = enteredText.trim();
     textRef.current!.value = "";
-    onAddTodo(enteredText);
+    todoCtx.addTodo(enteredText);
   };
 
   return (
