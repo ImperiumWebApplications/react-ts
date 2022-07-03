@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import classes from "./NewTodo.module.css";
 
 // Thew NewTodo component will received reference to a method from the parent as a prop
 // THe method will accept the values from textRef as an argument and be executed when the user submits the form
@@ -18,7 +19,7 @@ const NewTodo: React.FC<{ onAddTodo: (text: string) => void }> = ({
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={classes.form}>
       <input type="text" ref={textRef} />
       <button type="submit">Add</button>
     </form>
